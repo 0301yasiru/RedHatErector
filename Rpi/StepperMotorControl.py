@@ -23,7 +23,6 @@ class Stepper:
         
         self.speedRPM = speedRPM
         self.duration = 1/((self.speedRPM / 60) * 200) * 1e6  # period of a pulse in microseconds
-        self.speedRPS = self.speedRPM / 60
         self.direction = direction
     
     @threaded
@@ -71,7 +70,7 @@ class StepperDriver:
         flips = [0,0,0,0,0,0,0,0]
         
         for motor in self.motorRef:
-            flips[motor.id] = round(self.pulseSpeed / (400 * motor.speedRPS))
+            flips[motor.id] = round(self.pulseSpeed / (400 * motor.speedRPM / 60))
             
         return flips
             
@@ -111,13 +110,44 @@ class StepperDriver:
 
         GPIO.cleanup()
 
+    def __printMotors(self):
+        print("+-------------+-------------+-------------+")
+        print("|  MOTOR ID   |  SPEED RPM  |  DIRECTION  |")
+        print("+-------------+-------------+-------------+")
+        
+        for motor in self.motorRef:
+            print("|" + str(motor.id).ljust(13) + "|" + str(motor.speedRPM).ljust(13) + "|" + str(motor.direction).ljust(13) + "|")
+        
+        print("+-------------+-------------+-------------+")
+
+    def __setAttr(self, id_, speed=None):
+        if speed:
+            self.motorRef[id_].speedRPM = speed
+            self.flipPeriods = self.__calculateBitPeriod()
+            
 
     @threaded
     def driverConsole(self):
         while not self.__exit:
-            data = input("Driver Console#/ > ")
-            if data == 'quit()':
+            data = input("Driver Console#/ > ").split()
+            
+            if data[0] == 'quit()':
                 self.__exit = True
+
+            elif data[0] == 'list':
+                if data[1] == 'motors':
+                    self.__printMotors()
+
+            elif data[0] == 'set':
+                motorid = int(data[1][-1])
+                
+                if data[2] == 'speed':
+                    self.__setAttr(motorid, speed = int(data[3]))
+                
+                elif data[2] == 'dir':
+                    self.motorRef[motorid].direction = bool(int(data[3]))
+
+            
 
     def start(self):
         self.stepMotors()
@@ -125,7 +155,7 @@ class StepperDriver:
 
 
 
-driver = StepperDriver([Stepper(0), Stepper(1, speedRPM=120, direction=True), Stepper(2, speedRPM=240)])
+driver = StepperDriver([Stepper(0), Stepper(1), Stepper(2)])
 driver.start()
 
     
