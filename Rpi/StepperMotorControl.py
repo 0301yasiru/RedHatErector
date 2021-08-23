@@ -33,6 +33,9 @@ class Stepper:
 
 class StepperDriver:
     def __init__(self, motorRef):
+        """
+        DOCSTRING: This function will initialize the Stepper Driver Unit
+        """
         self.conn = {
             'clk': 11, # Serial clock pin
             'ser': 10, # Serial data pin
@@ -40,12 +43,23 @@ class StepperDriver:
         }
         
         self.motorRef = motorRef # a list of motor objects
+
+        # now we have to fill in the empty motors
+        for tempID in range(8):
+            if tempID not in [motor.id for motor in self.motorRef]:
+                self.motorRef.append(Stepper(tempID))
+                
+        
         self.pulseSpeed = 2670 #minimum requirenment
         self.pulsePeriod = 1/self.pulseSpeed * 1e6
-        self.flipPeriods = self.__calculateBitPeriod()
-        self.__exit = False
 
+        # extract motorDirections
+        self.__motorDirections = np.array([motor.direction for motor in motorRef], dtype='int8')
+        # calculate bit flip periods
+        self.flipPeriods = self.__calculateBitPeriod()
+        
         self.__setupGPIO()
+        self.__exit = False
 
     def __setupGPIO(self):
         GPIO.setmode(GPIO.BCM)
@@ -67,7 +81,7 @@ class StepperDriver:
         DOCTRING: This function assumes the paralel data output at pulseSpeed and calculate the lipping points
                   each motor
         """
-        flips = [0,0,0,0,0,0,0,0]
+        flips = np.ones(shape = 8, dtype = 'int8')
         
         for motor in self.motorRef:
             flips[motor.id] = round(self.pulseSpeed / (400 * motor.speedRPM / 60))
@@ -90,23 +104,24 @@ class StepperDriver:
         
         while not self.__exit:
             start = datetime.now()
-
-            for i in range(len(self.motorRef)):
-                data[2 * i] = self.motorRef[i].direction
-                data[2 * i + 1] ^= (__counter % self.flipPeriods[i] == 0)
+            
+            data[::2] = self.__motorDirections
+            data[1::2] ^= __counter % self.flipPeriods == 0
+            
 
             GPIO.output(self.conn['ltc'], GPIO.HIGH)
             self.__shiftOut(data[::-1])
             GPIO.output(self.conn['ltc'], GPIO.LOW)
 
-            try:
-                sleep((self.pulsePeriod - (datetime.now() - start).microseconds - 100) / 1e6)
-            except ValueError:
-                pass
+            # try:
+            #     sleep((self.pulsePeriod - (datetime.now() - start).microseconds - 100) / 1e6)
+            # except ValueError:
+            #     pass
 
             __counter += 1 # increment the coounter
-            # print(data)
-            # sleep(30)
+
+            print("Time Taken for the proccess -> {}".format((datetime.now() - start).microseconds))
+            if __counter > 30: break
 
         GPIO.cleanup()
 
