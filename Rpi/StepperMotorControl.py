@@ -6,6 +6,9 @@ from datetime import datetime
 from threading import Thread
 from time import sleep
 import numpy as np
+from ctypes import *
+
+cfunc = CDLL('/home/pi/Documents/Programs/Python/RedHatErector/Rpi/GPIO.so')
 
 def threaded(fn):
     def wrapper(*args, **kwargs):
@@ -62,19 +65,15 @@ class StepperDriver:
         self.__exit = False
 
     def __setupGPIO(self):
+        cfunc.setup()
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.conn['clk'], GPIO.OUT)
-        GPIO.setup(self.conn['ser'], GPIO.OUT)
+        # GPIO.setup(self.conn['clk'], GPIO.OUT)
+        # GPIO.setup(self.conn['ser'], GPIO.OUT)
         GPIO.setup(self.conn['ltc'], GPIO.OUT)
 
-        GPIO.output(self.conn['ltc'], GPIO.LOW)
-        GPIO.output(self.conn['clk'], GPIO.HIGH)
+        # GPIO.output(self.conn['ltc'], GPIO.LOW)
+        # GPIO.output(self.conn['clk'], GPIO.HIGH)
 
-    def __shiftOut(self, val):
-        for i in range(0,16):
-            GPIO.output(self.conn['clk'], GPIO.HIGH)
-            GPIO.output(self.conn['ser'], val[i] and GPIO.HIGH or GPIO.LOW)
-            GPIO.output(self.conn['clk'], GPIO.LOW)
         
     def __calculateBitPeriod(self):
         """
@@ -101,27 +100,30 @@ class StepperDriver:
         
         __counter = 0 # The Flip Counter
         data = np.zeros(shape = (16), dtype=bool)
-        
+
         while not self.__exit:
-            start = datetime.now()
+            time = datetime.now()
             
             data[::2] = self.__motorDirections
             data[1::2] ^= __counter % self.flipPeriods == 0
             
-
+            data_packed = np.packbits(data)
+            
             GPIO.output(self.conn['ltc'], GPIO.HIGH)
-            self.__shiftOut(data[::-1])
+
+            cfunc.shiftData(int(data_packed[1]))
+            cfunc.shiftData(int(data_packed[0]))
+
             GPIO.output(self.conn['ltc'], GPIO.LOW)
 
-            # try:
-            #     sleep((self.pulsePeriod - (datetime.now() - start).microseconds - 100) / 1e6)
-            # except ValueError:
-            #     pass
-
             __counter += 1 # increment the coounter
+            time = datetime.now() - time
+            
+            try:
+                sleep((self.pulsePeriod - time.microseconds - 50) * 1e-6)
+            except ValueError:
+                pass
 
-            print("Time Taken for the proccess -> {}".format((datetime.now() - start).microseconds))
-            if __counter > 30: break
 
         GPIO.cleanup()
 
@@ -149,7 +151,7 @@ class StepperDriver:
             if data[0] == 'quit()':
                 self.__exit = True
 
-            elif data[0] == 'list':
+            elif data[0] == 'list' or data[0] == 'show':
                 if data[1] == 'motors':
                     self.__printMotors()
 
@@ -161,6 +163,7 @@ class StepperDriver:
                 
                 elif data[2] == 'dir':
                     self.motorRef[motorid].direction = bool(int(data[3]))
+                    self.__motorDirections = np.array([motor.direction for motor in self.motorRef], dtype='int8')
 
             
 
