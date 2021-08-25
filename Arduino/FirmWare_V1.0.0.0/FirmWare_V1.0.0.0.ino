@@ -17,17 +17,9 @@ void setup() {
   // Setup Serial Communication to communicate with the computer
   Serial.begin(9600);
   
-  driver.listMotors();
-
-
-  Serial.println("Done!");
 }
 
 void loop() {
-  
-  driver.setMotorSteps(1, 10000, 350);
-  driver.spinMotors();
 
-  delay(1000);
 
 }

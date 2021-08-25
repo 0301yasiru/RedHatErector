@@ -66,16 +66,16 @@ void MotorDriver::setMotorSteps(uint8_t id, short steps, short speedRPM){
   steps_list[id] = abs(steps) * flipPeriods[id] * 2; // update the step list array 
 }// end of setting motor steps
 
-int* MotorDriver::sumSteps(){
-    summation = 0;
+unsigned int* MotorDriver::sumSteps(){
+    maxSteps = 0;
     for(uint8_t i = 0; i < 8; ++i) {
-      if (summation < steps_list[i]) summation = steps_list[i];
+      if (maxSteps < steps_list[i]) maxSteps = steps_list[i];
     }
-    return &summation; 
+    return &maxSteps; 
 }
 
 void MotorDriver::spinMotors(){
-  int counter = *sumSteps(); // counter will count the number of frames occured
+  unsigned int counter = *sumSteps(); // counter will count the number of frames occured
   unsigned short composit = 0; // this is the final 2 bit data to be sent to shoft registers
   long time_ {};
   while (counter){

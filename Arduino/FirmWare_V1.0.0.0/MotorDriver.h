@@ -11,15 +11,15 @@ class MotorDriver{
     short framePeriod = 1e6 / frameSpeed;  // this is the period of a frame
 
     uint8_t flipPeriods[8] {}; // this array will stor the period of each pulse bit
-    short steps_list[8]; // this function will store the number of steps assaigned for each motor
+    unsigned int steps_list[8]; // this function will store the number of steps assaigned for each motor
     uint8_t directionBits {};  // this byte will contain the directions of each motor
-    int summation = 0; // this variable will be use to calculate step sum
+    unsigned int maxSteps = 0; // this variable will be use to calculate step sum
   
     // init Driver function will be used to initialize the driver
     void initDriver();
     void claculateFlipPeriods();
     void updateDirections();
-    int* sumSteps();
+    unsigned int* sumSteps();
     
 
   public:  
