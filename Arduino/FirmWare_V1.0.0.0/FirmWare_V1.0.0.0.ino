@@ -1,3 +1,17 @@
+/*
+  Firmware for the motor driver console of ROBOT arms
+  ==================================================
+
+  Firmware Version: 1.0.0.0
+  
+  Programmed By   : Mr. Yasiru Senerath Karunanayaka
+                    (Engineering (Bsc. Hons) undergraduate university of Moratuwa)
+
+  Date            : 26-Aug-2021
+
+
+*/
+
 
 // Include necessary liblaries for the project
 #include "MotorDriver.h"
@@ -17,9 +31,9 @@ void setup() {
   // Setup Serial Communication to communicate with the computer
   Serial.begin(9600);
   
-}
+}// end of the void setup function
 
 void loop() {
 
 
-}
+}// end of the void loop function

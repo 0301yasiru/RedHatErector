@@ -1,3 +1,17 @@
+/*
+  Firmware for the motor driver console of ROBOT arms
+  ==================================================
+
+  Firmware Version: 1.0.0.0
+  
+  Programmed By   : Mr. Yasiru Senerath Karunanayaka
+                    (Engineering (Bsc. Hons) undergraduate university of Moratuwa)
+
+  Date            : 26-Aug-2021
+
+
+*/
+
 #include "Stepper.h"
 #include <Arduino.h>
 

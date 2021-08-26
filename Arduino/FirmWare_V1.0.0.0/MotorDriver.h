@@ -1,3 +1,17 @@
+/*
+  Firmware for the motor driver console of ROBOT arms
+  ==================================================
+
+  Firmware Version: 1.0.0.0
+  
+  Programmed By   : Mr. Yasiru Senerath Karunanayaka
+                    (Engineering (Bsc. Hons) undergraduate university of Moratuwa)
+
+  Date            : 26-Aug-2021
+
+
+*/
+
 #ifndef MotorDriverFunctions
 #define MotorDriverFunctions
 
@@ -15,11 +29,11 @@ class MotorDriver{
     uint8_t directionBits {};  // this byte will contain the directions of each motor
     unsigned int maxSteps = 0; // this variable will be use to calculate step sum
   
-    // init Driver function will be used to initialize the driver
-    void initDriver();
-    void claculateFlipPeriods();
-    void updateDirections();
-    unsigned int* sumSteps();
+    // thse are the private functions to be used inside the class
+    void initDriver(); // init Driver function will be used to initialize the driver
+    void claculateFlipPeriods(); // this function will calculat flipping periods
+    void updateDirections(); // this function will update direction word
+    unsigned int* findMaxSteps(); // this function will find the maximum itterations
     
 
   public:  
@@ -28,9 +42,9 @@ class MotorDriver{
 
     
     // public functions are defined here
-    void listMotors();
-    void setMotorSteps(uint8_t id, short steps = 0, short speedRPM = 0);
-    void spinMotors();
+    void listMotors(); // this function will list down connected motor status
+    void setMotorSteps(uint8_t id, short steps = 0, short speedRPM = 0); // this function will setup a motor
+    void execute(); // this function will execute the driver for current settings
     
 }; // end of the motor Driver class
 
