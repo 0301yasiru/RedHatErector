@@ -1,0 +1,184 @@
+Removed Pin From Net: NetName=GND Pin=J2-1
+Removed Pin From Net: NetName=GND Pin=J2-2
+Removed Pin From Net: NetName=GND Pin=J2-3
+Removed Pin From Net: NetName=GND Pin=J2-4
+Removed Member From Class: ClassName=ReadHat_V1.0.0.0 Member=J2
+Added Component: Designator=U5(Polo-A4988 Motor Driver_V)
+Add component (AddParameter): Name = "Case/Package"; Value = "A4988MotorDriver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.pololu.com/file/0J1082/a4988-stepper-motor-driver-carrier-dimension-diagram.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Dec-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Pololu Robotics & Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "TH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Current"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Voltage"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "16-Pin Through Hole Device, Body 20.3 x 15.2 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "A4988 Motor Driver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=U6(Polo-A4988 Motor Driver_V)
+Add component (AddParameter): Name = "Case/Package"; Value = "A4988MotorDriver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.pololu.com/file/0J1082/a4988-stepper-motor-driver-carrier-dimension-diagram.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Dec-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Pololu Robotics & Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "TH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Current"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Voltage"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "16-Pin Through Hole Device, Body 20.3 x 15.2 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "A4988 Motor Driver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=U7(Polo-A4988 Motor Driver_V)
+Add component (AddParameter): Name = "Case/Package"; Value = "A4988MotorDriver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.pololu.com/file/0J1082/a4988-stepper-motor-driver-carrier-dimension-diagram.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Dec-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Pololu Robotics & Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "TH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Current"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Voltage"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "16-Pin Through Hole Device, Body 20.3 x 15.2 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "A4988 Motor Driver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=U8(Polo-A4988 Motor Driver_V)
+Add component (AddParameter): Name = "Case/Package"; Value = "A4988MotorDriver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.pololu.com/file/0J1082/a4988-stepper-motor-driver-carrier-dimension-diagram.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Dec-15"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Pololu Robotics & Electronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Max Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Min Operating Temperature"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "TH"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Current"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Nominal Supply Voltage"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "16-Pin Through Hole Device, Body 20.3 x 15.2 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "A4988 Motor Driver"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Pins"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "RoHS Compliant"; Value = "Unknown"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage Rating"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=U5-1
+Added Pin To Net: NetName=GND Pin=U5-2
+Added Pin To Net: NetName=GND Pin=U5-3
+Added Pin To Net: NetName=GND Pin=U5-4
+Added Pin To Net: NetName=+5 Pin=U5-5
+Added Pin To Net: NetName=GND Pin=U5-9
+Added Pin To Net: NetName=+5 Pin=U5-10
+Added Pin To Net: NetName=GND Pin=U5-15
+Added Pin To Net: NetName=GND Pin=U6-1
+Added Pin To Net: NetName=GND Pin=U6-2
+Added Pin To Net: NetName=GND Pin=U6-3
+Added Pin To Net: NetName=GND Pin=U6-4
+Added Pin To Net: NetName=+5 Pin=U6-5
+Added Pin To Net: NetName=GND Pin=U6-9
+Added Pin To Net: NetName=+5 Pin=U6-10
+Added Pin To Net: NetName=GND Pin=U6-15
+Added Pin To Net: NetName=GND Pin=U7-1
+Added Pin To Net: NetName=GND Pin=U7-2
+Added Pin To Net: NetName=GND Pin=U7-3
+Added Pin To Net: NetName=GND Pin=U7-4
+Added Pin To Net: NetName=+5 Pin=U7-5
+Added Pin To Net: NetName=GND Pin=U7-9
+Added Pin To Net: NetName=+5 Pin=U7-10
+Added Pin To Net: NetName=GND Pin=U7-15
+Added Pin To Net: NetName=GND Pin=U8-1
+Added Pin To Net: NetName=GND Pin=U8-2
+Added Pin To Net: NetName=GND Pin=U8-3
+Added Pin To Net: NetName=GND Pin=U8-4
+Added Pin To Net: NetName=+5 Pin=U8-5
+Added Pin To Net: NetName=GND Pin=U8-9
+Added Pin To Net: NetName=+5 Pin=U8-10
+Added Pin To Net: NetName=GND Pin=U8-15
+Added Pin To Net: NetName=+12 Pin=U5-16
+Added Pin To Net: NetName=+12 Pin=U6-16
+Added Pin To Net: NetName=+12 Pin=U7-16
+Added Pin To Net: NetName=+12 Pin=U8-16
+Added Net: Name=+12
+Added Pin To Net: NetName=NetR6_2 Pin=R6-2
+Added Pin To Net: NetName=NetR6_2 Pin=U2-15
+Added Net: Name=NetR6_2
+Added Pin To Net: NetName=NetR7_2 Pin=R7-2
+Added Pin To Net: NetName=NetR7_2 Pin=U2-14
+Added Net: Name=NetR7_2
+Added Pin To Net: NetName=NetR8_2 Pin=R8-2
+Added Pin To Net: NetName=NetR8_2 Pin=U2-13
+Added Net: Name=NetR8_2
+Added Pin To Net: NetName=NetU3_1 Pin=U3-1
+Added Pin To Net: NetName=NetU3_1 Pin=U5-7
+Added Net: Name=NetU3_1
+Added Pin To Net: NetName=NetU3_2 Pin=U3-2
+Added Pin To Net: NetName=NetU3_2 Pin=U6-8
+Added Net: Name=NetU3_2
+Added Pin To Net: NetName=NetU3_3 Pin=U3-3
+Added Pin To Net: NetName=NetU3_3 Pin=U6-7
+Added Net: Name=NetU3_3
+Added Pin To Net: NetName=NetU3_4 Pin=U3-4
+Added Pin To Net: NetName=NetU3_4 Pin=U7-8
+Added Net: Name=NetU3_4
+Added Pin To Net: NetName=NetU3_5 Pin=U3-5
+Added Pin To Net: NetName=NetU3_5 Pin=U7-7
+Added Net: Name=NetU3_5
+Added Pin To Net: NetName=NetU3_6 Pin=U3-6
+Added Pin To Net: NetName=NetU3_6 Pin=U8-8
+Added Net: Name=NetU3_6
+Added Pin To Net: NetName=NetU3_7 Pin=U3-7
+Added Pin To Net: NetName=NetU3_7 Pin=U8-7
+Added Net: Name=NetU3_7
+Added Pin To Net: NetName=NetU3_15 Pin=U3-15
+Added Pin To Net: NetName=NetU3_15 Pin=U5-8
+Added Net: Name=NetU3_15
+Added Pin To Net: NetName=NetU4_1 Pin=U4-1
+Added Pin To Net: NetName=NetU4_1 Pin=U6-6
+Added Net: Name=NetU4_1
+Added Pin To Net: NetName=NetU4_2 Pin=U4-2
+Added Pin To Net: NetName=NetU4_2 Pin=U7-6
+Added Net: Name=NetU4_2
+Added Pin To Net: NetName=NetU4_3 Pin=U4-3
+Added Pin To Net: NetName=NetU4_3 Pin=U8-6
+Added Net: Name=NetU4_3
+Added Pin To Net: NetName=NetU4_15 Pin=U4-15
+Added Pin To Net: NetName=NetU4_15 Pin=U5-6
+Added Net: Name=NetU4_15
+Added Pin To Net: NetName=NetU5_11 Pin=U5-11
+Added Net: Name=NetU5_11
+Added Pin To Net: NetName=NetU5_12 Pin=U5-12
+Added Net: Name=NetU5_12
+Added Pin To Net: NetName=NetU5_13 Pin=U5-13
+Added Net: Name=NetU5_13
+Added Pin To Net: NetName=NetU5_14 Pin=U5-14
+Added Net: Name=NetU5_14
+Added Pin To Net: NetName=NetU6_11 Pin=U6-11
+Added Net: Name=NetU6_11
+Added Pin To Net: NetName=NetU6_12 Pin=U6-12
+Added Net: Name=NetU6_12
+Added Pin To Net: NetName=NetU6_13 Pin=U6-13
+Added Net: Name=NetU6_13
+Added Pin To Net: NetName=NetU6_14 Pin=U6-14
+Added Net: Name=NetU6_14
+Added Pin To Net: NetName=NetU7_11 Pin=U7-11
+Added Net: Name=NetU7_11
+Added Pin To Net: NetName=NetU7_12 Pin=U7-12
+Added Net: Name=NetU7_12
+Added Pin To Net: NetName=NetU7_13 Pin=U7-13
+Added Net: Name=NetU7_13
+Added Pin To Net: NetName=NetU7_14 Pin=U7-14
+Added Net: Name=NetU7_14
+Added Pin To Net: NetName=NetU8_11 Pin=U8-11
+Added Net: Name=NetU8_11
+Added Pin To Net: NetName=NetU8_12 Pin=U8-12
+Added Net: Name=NetU8_12
+Added Pin To Net: NetName=NetU8_13 Pin=U8-13
+Added Net: Name=NetU8_13
+Added Pin To Net: NetName=NetU8_14 Pin=U8-14
+Added Net: Name=NetU8_14
+Added Member To Class: ClassName=ReadHat_V1.0.0.0 Member=Component U5 A4988 Motor Driver
+Added Member To Class: ClassName=ReadHat_V1.0.0.0 Member=Component U6 A4988 Motor Driver
+Added Member To Class: ClassName=ReadHat_V1.0.0.0 Member=Component U7 A4988 Motor Driver
+Added Member To Class: ClassName=ReadHat_V1.0.0.0 Member=Component U8 A4988 Motor Driver
+Added Room: Name=ReadHat_V1.0.0.0
