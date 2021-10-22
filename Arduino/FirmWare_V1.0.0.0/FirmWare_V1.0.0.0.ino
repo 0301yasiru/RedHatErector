@@ -34,6 +34,9 @@ void setup() {
 }// end of the void setup function
 
 void loop() {
-
-
+    driver.setMotorSteps(0,2000, 120);
+    driver.setMotorSteps(1,4000, 240);
+    driver.setMotorSteps(2,2000, 120);
+    driver.setMotorSteps(3,4000, 240);
+    driver.execute();
 }// end of the void loop function

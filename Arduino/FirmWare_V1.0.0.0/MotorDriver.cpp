@@ -20,6 +20,7 @@
 
 // Define pins using in the main program
 #define latch 2 // 2 nd in PORTD registwe
+#define latchState 3 // Motor state latch
 
 MotorDriver::MotorDriver(StepperMotor *motorRef_){
   /*This is the constructor for the motor driver class*/
@@ -40,6 +41,7 @@ void MotorDriver::initDriver(){
   
   // set data direction of latch to output
   DDRD = DDRD | ( 1 << latch);
+  DDRD = DDRD | ( 1 << latchState);
 
   // set SPI communication
   // Setup the SPI communication to communicate with the driver board
@@ -52,6 +54,15 @@ void MotorDriver::initDriver(){
 
   // update the direction byte
   updateDirections();
+
+  // Now cleanup motor history registry
+  motorState = 0;
+  // now its time to transfer calculated data
+  PORTD &= ~(1 << latchState);
+  delayMicroseconds(1); // need a delay
+  SPI.transfer(motorState); 
+  delayMicroseconds(1); // need a delay
+  PORTD |= 1 << latchState;
 }// end of the initialization of the driver
 
 void MotorDriver::claculateFlipPeriods(){
@@ -121,7 +132,16 @@ void MotorDriver::setMotorSteps(uint8_t id, short steps, short speedRPM){
     claculateFlipPeriods();
   }
   
-  steps_list[id] = abs(steps) * flipPeriods[id] * 2; // update the step list array 
+  steps_list[id] = abs(steps) * flipPeriods[id] * 2; // update the step list array
+  motorState |= 1 << id; // update motor state register
+
+  // now its time to transfer calculated data
+  PORTD &= ~(1 << latchState);
+  delayMicroseconds(1); // need a delay
+  SPI.transfer(motorState); 
+  delayMicroseconds(1); // need a delay
+  PORTD |= 1 << latchState;
+  
 }// end of setting motor steps
 
 unsigned int* MotorDriver::findMaxSteps(){
@@ -187,4 +207,13 @@ void MotorDriver::execute(){
     time_ = micros() - time_; // calculate the time taken for the process
     delayMicroseconds(framePeriod - time_); // delay to fill the frame period
   }// end of the main while loop
+
+  // Now cleanup motor history registry
+  motorState = 0;
+  // now its time to transfer calculated data
+  PORTD &= ~(1 << latchState);
+  delayMicroseconds(1); // need a delay
+  SPI.transfer(motorState); 
+  delayMicroseconds(1); // need a delay
+  PORTD |= 1 << latchState;
 }// end of motor spinning function

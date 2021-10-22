@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=+5 Pin=C1-1
+Removed Pin From Net: NetName=+5 Pin=C2-1
+Removed Pin From Net: NetName=+5 Pin=C3-1
+Removed Pin From Net: NetName=+5 Pin=C4-1
+Change Component Designator: OldDesignator=STEP 1 NewDesignator=J2
+Change Component Designator: OldDesignator=STEP 2 NewDesignator=J4
+Change Component Designator: OldDesignator=STEP 3 NewDesignator=J3
+Change Component Designator: OldDesignator=STEP 4 NewDesignator=J5
+Added Pin To Net: NetName=+12 Pin=C1-1
+Added Pin To Net: NetName=+12 Pin=C2-1
+Added Pin To Net: NetName=+12 Pin=C3-1
+Added Pin To Net: NetName=+12 Pin=C4-1
+Added Room: Name=ReadHat_V1.0.0.0
