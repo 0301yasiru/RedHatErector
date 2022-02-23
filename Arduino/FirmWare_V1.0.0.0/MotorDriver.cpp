@@ -19,8 +19,8 @@
 #include <Arduino.h>
 
 // Define pins using in the main program
-#define latch 2 // 2 nd in PORTD registwe
-#define latchState 3 // Motor state latch
+#define latch 4 // 2 nd in PORTD registwe
+#define latchState 5 // Motor state latch
 
 MotorDriver::MotorDriver(StepperMotor *motorRef_){
   /*This is the constructor for the motor driver class*/
@@ -160,6 +160,98 @@ unsigned int* MotorDriver::findMaxSteps(){
     return &maxSteps; 
 }
 
+void MotorDriver::softExecute(){
+  /*
+   DOCSTRING: This function is used to execute the settled steps sirections and speed for the 
+              motors.
+              
+   ALGORITHM: --> Use step finding function to find number of itterations needed
+              --> Do the folowing process for the number of itterations
+
+              --> Get the direction byte and distribute the byte among 2 bytes 1 by 1 in equal distance
+                  (11001010) -> _1_1_0_0_1_0_1_0
+
+              --> Then fill in remaining bits according to flipping periods (flip each bit when flip period arrvies)
+                  (When doing that make sure you don't flip if allocated steps for a motor is ended)
+
+              --> After each itteration reduce the number of steps remain in the steps list by one
+
+              --> Send the composit data over SPI to the driver
+
+              --> Calculate the time taken and delay remaining time until frame period completes
+
+   RETURN   : returns the pointer to the calculated maximum number of steps variable
+  */
+  
+  unsigned int counter = *findMaxSteps(); // counter will count the number of frames occured
+  unsigned short composit = 0; // this is the final 2 bit data to be sent to shoft registers
+  long time_ {}; // this variable is used to calculate the consumptioned time for the process in micro seconds
+  int t1 = 0;
+  int t2 = 0;
+  bool mode = true;
+  unsigned int acceleration = 500;
+  unsigned int falling  = 0;
+  
+  if (counter > acceleration){
+    falling = counter - acceleration;
+  }else{
+    mode = false;
+    falling = counter / 2.0;
+  }
+  
+  
+  while (counter){
+    time_ = micros();
+    for(uint8_t i = 0; i < 8; ++i){
+      composit |= (1 & directionBits >> i) << (2 * i); // assign direction bits
+      composit ^= (!(counter % flipPeriods[i]) & !!steps_list[i]) << (2 * i + 1); // assign pulses
+      if (steps_list[i]) steps_list[i] --; //decrement the steps 
+    } // end of the 8 for loop
+
+    // now its time to transfer calculated data
+    PORTD &= ~(1 << latch);
+    delayMicroseconds(1); // need a delay
+    SPI.transfer16(composit); 
+    delayMicroseconds(1); // need a delay
+    PORTD |= 1 << latch;
+
+    counter --; // deccrement the counter
+
+    t1 = counter - falling;
+    if (t1 < 0) t1 = 0;
+    
+    if (!mode){
+      if (counter < falling) t2 = falling - counter;
+    }else{
+      if (counter < acceleration) t2 = acceleration - counter;
+    }
+    
+    
+    time_ = micros() - time_; // calculate the time taken for the process
+    delayMicroseconds(framePeriod - time_ + t1 + t2); // delay to fill the frame period
+  }// end of the main while loop
+
+
+
+
+
+
+
+  /*
+  // Now cleanup motor history registry
+  motorState = 0;
+  // now its time to transfer calculated data
+  PORTD &= ~(1 << latchState);
+  delayMicroseconds(1); // need a delay
+  SPI.transfer(motorState); 
+  delayMicroseconds(1); // need a delay
+  PORTD |= 1 << latchState;
+  */
+
+
+  
+}//end of the soft execute function
+
 void MotorDriver::execute(){
   /*
    DOCSTRING: This function is used to execute the settled steps sirections and speed for the 
@@ -208,6 +300,13 @@ void MotorDriver::execute(){
     delayMicroseconds(framePeriod - time_); // delay to fill the frame period
   }// end of the main while loop
 
+
+
+
+
+
+
+  /*
   // Now cleanup motor history registry
   motorState = 0;
   // now its time to transfer calculated data
@@ -216,4 +315,8 @@ void MotorDriver::execute(){
   SPI.transfer(motorState); 
   delayMicroseconds(1); // need a delay
   PORTD |= 1 << latchState;
+  */
+
+
+  
 }// end of motor spinning function

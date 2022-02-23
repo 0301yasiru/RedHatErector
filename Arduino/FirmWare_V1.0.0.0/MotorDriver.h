@@ -46,6 +46,7 @@ class MotorDriver{
     void listMotors(); // this function will list down connected motor status
     void setMotorSteps(uint8_t id, short steps = 0, short speedRPM = 0); // this function will setup a motor
     void execute(); // this function will execute the driver for current settings
+    void softExecute();
     
 }; // end of the motor Driver class
 
